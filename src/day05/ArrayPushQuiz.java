@@ -12,9 +12,17 @@ public class ArrayPushQuiz {
         //     if (s1.equals(s2)) (o)
 
 
+        //음식명을 처음 1개 입력받고서 해야할 일
+        // 1. 입력한 문자가 그만인지 확인해본다.
+        // 2. 그만이면 반복문을 종료하고 아니면? 배열에 저장해야한다.
+        // 3-1. 음식의 개수가 정해지지 않았으므로 일단은 빈 배열로 시작한다.
+        // 4. 음식이 한개 입력되었을 때? 빈배열이므로 음식명을 저장할수 없다.
+        // 5. 배열의 크기를 1개 늘려야한다. 그리고 그 자리에 음식명을 저장한다.
 
-
-
+        //2번째 음식명 입력부터 해야할 일
+        // 3-2. 기존 음식이 저장된 배열보다 1개 더 큰 배열을 생성한다
+        // 4. 기존 음식명들을 새로 생성된 배열로 복사한다.
+        // 5. 마지막 위치에 지금 입력받은 음식명을 저장한다.
 
 
         System.out.println("# 먹고 싶은 음식을 입력하세요!!");
@@ -22,31 +30,28 @@ public class ArrayPushQuiz {
 
         Scanner sc = new Scanner(System.in);
 
-        String[] foodList = {};
+        String[] foodList = {}; //음식명들을 저장할 배열
+
         while (true) {
-            //음식을 한번 입력받을 때 해야 할 일
-            //1. 일단 음식명을 입력받아야 함. -> 스캐너가 필요함
-            System.out.print("> ");
+            System.out.printf(">> ");
             String newFood = sc.nextLine();
 
-            if (newFood.equals("그만")) {
-                break;
-            }
+            if (newFood.equals("그만")) break;
 
-            //2. 배열에 신규데이터가 들어갈 공간 확보
+            //배열에 신규데이터가 들어갈 공간 확보
             String[] temp = new String[foodList.length + 1];
 
-            //3. 기존에 저장된 음식들을 모두 신규배열로 복사
+            //기존 데이터 복사
             for (int i = 0; i < foodList.length; i++) {
                 temp[i] = foodList[i];
             }
-            //4. 신규데이터를 마지막 인덱스에 추가
-            temp[temp.length-1] = newFood;
-            foodList = temp;
-            temp = null;
-        }//end while
+            //신규데이터 마지막인덱스에 추가
+            temp[temp.length - 1] = newFood;
+            foodList = temp; temp = null;
+        }// end while
 
-        System.out.println("먹고 싶은 음식: " + Arrays.toString(foodList));
+        System.out.println("먹고 싶은 음식리스트: " + Arrays.toString(foodList));
         sc.close();
-    }
-}
+
+    }//end main
+}//end class
