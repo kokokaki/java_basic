@@ -33,13 +33,7 @@ public class MemberController {
      * @return 중복되었으면 true, 아니면 false
      */
     public boolean checkId(String inputId) {
-        for (Member member : m) {
-            if (member == null) break;
-            if (inputId.equals(member.getId())) {
-                return true;
-            }
-        }
-        return false;
+        return findIndexById(inputId) != -1;
     }
 
     //멤버 배열 리턴
@@ -100,6 +94,59 @@ public class MemberController {
             return true;
         } else {
             return false;
+        }
+    }
+    public boolean updateName(String id, String newName) {
+        Member member = searchId(id);
+        if (member != null) {
+            member.setName(newName);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean updateEmail(String id, String newEmail) {
+        Member member = searchId(id);
+        if (member != null) {
+            member.setEmail(newEmail);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private int findIndexById(String id) {
+        int index = -1;
+        for (int i = 0; i < existMemberNum(); i++) {
+            if (id.equals(m[i].getId())) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    //회원정보 하나를 삭제하는 메서드
+    public boolean delete(String id) {
+        int index = findIndexById(id);
+
+        if (index != -1) {
+            for (int i = index; i < existMemberNum() - 1; i++) {
+                m[i] = m[i+1];
+            }
+            //마지막 데이터를 null로 변경
+            m[existMemberNum() - 1] = null;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //회원정보 전체 삭제
+    public void delete() {
+        int count = existMemberNum();
+        for (int i = 0; i < count; i++) {
+            m[i] = null;
         }
     }
 }

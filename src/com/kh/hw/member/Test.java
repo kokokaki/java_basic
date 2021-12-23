@@ -22,10 +22,20 @@ public class Test {
 //            System.out.println(m.inform());
 //        }
 
-        mc.updatePassword("def", "999999!@");
+//        mc.updatePassword("def", "999999!@");
+//
+//        Member member = mc.searchId("def");
+//        System.out.println(member.inform());
 
-        Member member = mc.searchId("def");
-        System.out.println(member.inform());
+        mc.delete();
+
+        Member[] members = mc.printAll();
+        System.out.println(mc.existMemberNum());
+
+        for (Member m : members) {
+            if (m == null) break;
+            System.out.println(m.inform());
+        }
 
 
     }
