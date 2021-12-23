@@ -13,6 +13,7 @@ public class Member {
     }
 
     public Member(String id, String name, String password, String email, char gender, int age) {
+
         this.id = id;
         this.name = name;
         this.password = password;
@@ -31,11 +32,11 @@ public class Member {
         return id;
     }
 
-    public void setId(String id) {
-        if (id.length() < 7 && id.length() > 4) {
-            this.id = id;
+    public boolean setId(String id) {
+        if (id.length() < 7 && id.length() > 2) {
+            return true;
         } else {
-            return;
+            return false;
         }
     }
 

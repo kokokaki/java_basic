@@ -35,6 +35,9 @@ public class MemberController {
     public boolean checkId(String inputId) {
         return findIndexById(inputId) != -1;
     }
+    public boolean checkIdLength(String inputId) {
+        return inputId.length() < 7 && inputId.length() > 2;
+    }
 
     //멤버 배열 리턴
     public Member[] printAll() {
@@ -45,6 +48,7 @@ public class MemberController {
     public void insertMember(String id, String name, String password
                             , String email, char gender, int age) {
         int count = existMemberNum();
+
         m[count] = new Member(id, name, password, email, gender, age);
     }
 
