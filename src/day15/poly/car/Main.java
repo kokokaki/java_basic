@@ -41,5 +41,7 @@ public class Main {
         int money = shop.sellCar(mySonata);
         System.out.println("money = " + money);
 
+        park.drive(new Car());
+
     }
 }
