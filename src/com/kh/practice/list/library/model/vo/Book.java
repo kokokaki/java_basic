@@ -54,12 +54,7 @@ public class Book implements Comparable<Book> {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", category='" + category + '\'' +
-                ", price=" + price +
-                '}';
+        return String.format("(%s/%s/%s/%d)", title, author, category, price);
     }
 
     @Override

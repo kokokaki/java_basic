@@ -50,6 +50,6 @@ public class BookController {
     }
     public int ascBook() {
         bookList.sort(Book::compareTo);
-        return 0;
+        return 1;
     }
 }
